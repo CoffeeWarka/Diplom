@@ -1,0 +1,46 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--{% extends "base.html" %}-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    {% block title%}<Title>Home</Title>{% endblock %}-->
+<!--</head>-->
+<!--<body>-->
+<!--{% block content %}-->
+<!--<h2 align="center">{% block header %}Posts{% endblock %}</h2>-->
+<!--<div id="posts">-->
+<!--    {% for post in posts %}-->
+<!--    <div class="card border-dark">-->
+<!--        <div class="card-header d-flex justify-content-between align-items-center">-->
+<!--          <a href="/posts/{{post.user.username}}">Author: {{post.user.username}}</a>-->
+<!--          {% if user.id == post.author %}-->
+<!--          <div class="btn-group">-->
+<!--            <button type="button" class="btn btn-sm btn-primary dropdown-toggle"-->
+<!--            data-bs-toggle="dropdown"></button>-->
+<!--            <ul class="dropdown-menu">-->
+<!--                <li><a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a></li>-->
+<!--                <li><a href="/edit/{{post.id}}" class="dropdown-item">edit</a></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          {% endif %}-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            <div class="card-text">{{post.text}}</div>-->
+<!--        </div>-->
+<!--        <div class="card-footer text-muted">{{post.timestamp}}</div>-->
+<!--    </div>-->
+<!--    <br/>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+<!--{% block footer %}-->
+<!--<div align="center">-->
+<!--    <a href="/create-posts"-->
+<!--        ><button type="button" class="btn btn-dark btn-lg">-->
+<!--            Create Post-->
+<!--        </button></a>-->
+<!--</div>-->
+<!--{% endblock %}-->
+
+<!--{% endblock %}-->
+<!--</body>-->
+<!--</html>-->
