@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends "quiz/base.html" %}
+<html lang="en">
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Home</title>{% endblock %}
+</head>
+<body>
+<h1 align="center">Добро пожаловать!</h1>
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Привет, {{ user.username }}!
+        {% if all_questions %}
+            Ответь мне!</h1><br>
+<div class="row">
+{% for quest in page_quest %}
+    <div>
+        <h2><a href="/{{quest.id}}">{{ quest.question_text }}</a></h2>
+    </div>
+{% endfor %}
+        <div class="pagination">
+        <span class="step-links">
+            {% if page_quest.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ page_quest.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page_quest.number }} из {{ page_quest.paginator.num_pages }}.
+            </span>
+
+            {% if page_quest.has_next %}
+                <a href="?page={{ page_quest.next_page_number }}">Следующая</a>
+                <a href="?page={{ page_quest.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+        {% else %}
+            <p>Для Вас нет вопросов, вернитесь позже.</p>
+        {% endif %}
+{% else %}
+<h1 align="center">Добро пожаловать!<br>
+    Вы не вошли в свой аккаунт.<br>
+<a href="{% url 'login' %}">Войти</a></h1>
+{% endif %}
+{% endblock %}
+</body>
+</html>

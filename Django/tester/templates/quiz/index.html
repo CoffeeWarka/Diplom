@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+{% for quest in page_obj %}
+    <div class="col-md-4">
+        <h2><a href="answer">{{ quest.question_text }}"</a></h2>
+    </div>
+{% endfor %}
+        <div class="pagination">
+        <span class="step-links">
+            {% if home.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ home.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ home.number }} из {{ home.paginator.num_pages }}.
+            </span>
+
+            {% if news.has_next %}
+                <a href="?page={{ home.next_page_number }}">Следующая</a>
+                <a href="?page={{ home.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>

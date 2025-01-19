@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "quiz/base.html" %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Answer</title>{% endblock %}
+</head>
+<body>
+{% block content %}
+<h1>{{ question.question_text }} </h1>
+
+<ul>
+  {% for answer in question.answer_set.all %}
+    {% if answer.right_answer %}
+        <li> {{ answer.answer_text }} - {{ answer.user_choice }} ответов пользователей и это правильный ответ!</li>
+    {% else %}
+        <li> {{ answer.answer_text }} - {{ answer.user_choice }} ответов пользователей</li>
+    {% endif %}
+    {% endfor %}
+</ul>
+<a href="/home">Назад</a>
+{% endblock %}
+</body>
+</html>

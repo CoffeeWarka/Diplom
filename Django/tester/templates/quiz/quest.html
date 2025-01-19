@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "quiz/base.html" %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Quest
+</title>{% endblock %}
+</head>
+<body>
+{% block content %}
+<form action="{% url 'user_choice' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{ question.question_text }}</h1></legend>
+        {%if error_message %}<p><strong>error_message</strong></p>{% endif %}
+        {% for answer in question.answer_set.all %}
+            <input type="radio" name="answer" id="answer {{ forloop.counter }}" value="{{ answer.id }}">
+            <label for=" answer {{ forloop.counter }}">{{ answer.answer_text }}</label><br>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Ответить">
+</form>
+{% endblock %}
+</body>
+</html>
